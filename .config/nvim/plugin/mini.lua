@@ -146,11 +146,6 @@ mini_key_map.map_multistep('i', '<S-Tab>', { 'pmenu_prev' })
 mini_key_map.map_multistep('i', '<CR>',    { 'pmenu_accept', 'minipairs_cr' })
 mini_key_map.map_multistep('i', '<BS>',    { 'minipairs_bs' })
 
--- No ESC reach
-local mode = { 'i', 'c', 'x', 's' }
-mini_key_map.map_combo(mode, 'jk', '<BS><BS><Esc>')
-mini_key_map.map_combo(mode, 'kj', '<BS><BS><Esc>') -- To not have to worry about the order of keys, also map 'kj'
-
 -- Help me
 local notify_many_keys = function(key, suggestion)
   local lhs = string.rep(key, 5)
