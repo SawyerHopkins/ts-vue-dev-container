@@ -44,7 +44,22 @@ require('telescope').setup({
   pickers = {
     find_files = {
       mappings = {
-        n = { ["<C-g>"] = sendToGrep }
+        n = {
+          ["<C-g>"] = sendToGrep
+        }
+      }
+    },
+    buffers = {
+      mappings = {
+        n = {
+        ["d"] = function(prompt_bufnr)
+            local action_state = require("telescope.actions.state")
+            local current_picker = action_state.get_current_picker(prompt_bufnr)
+            current_picker:delete_selection(function(selection)
+              require("mini.bufremove").delete(selection.bufnr)
+            end)
+          end,
+        }
       }
     }
   }
