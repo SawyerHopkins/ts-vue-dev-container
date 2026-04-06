@@ -15,8 +15,3 @@ which_key.setup({
   preset = 'modern',
 })
 
---[[ KEY BINDINGS --]]
-
-vim.keymap.set('n', '<leader>?', function() which_key.show({
-  global = false
-}) end, { desc = 'Buffer Local Keymaps (which-key)' })

@@ -9,6 +9,8 @@ vim.opt.cursorline = true   -- Enable highlighting of the current line
 vim.opt.clipboard = vim.env.SSH_CONNECTION and '' or 'unnamedplus' -- Sync with system clipboard
 vim.g.loaded_netrw = 1 -- Disable netrw
 vim.g.loaded_netrwPlugin = 1 -- Disable netrw
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
 
 --[[
   Set status line filename highlight color when buffer is dirty 

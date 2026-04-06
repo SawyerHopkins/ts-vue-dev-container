@@ -26,18 +26,3 @@ require('oil').setup({
   delete_to_trash = true
 })
 
---[[ KEY BINDINGS --]]
-
-vim.keymap.set('n', '<leader>fe', require('oil').open_float, { desc = 'File explorer (oil)' })
-require('which-key').add({
-  { '<leader>f', group = '[f]ile', icon = '' }
-})
-
-vim.keymap.set("n", "<leader>_c", function()
-  require("oil").open(vim.fn.stdpath("config"))
-end, { desc = "Neovim config" })
-require('which-key').add({
-  { '<leader>_', group = '[_]neovim', icon = '' }
-})
-
-

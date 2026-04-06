@@ -45,7 +45,7 @@ require('telescope').setup({
     find_files = {
       mappings = {
         n = {
-          ["<C-g>"] = sendToGrep
+          ["<leader>sg"] = sendToGrep
         }
       }
     },
@@ -64,7 +64,6 @@ require('telescope').setup({
     }
   }
 })
-local builtin = require('telescope.builtin')
 
 vim.api.nvim_create_autocmd('User', {
   pattern = 'TelescopePreviewerLoaded',
@@ -77,43 +76,3 @@ vim.api.nvim_create_autocmd('User', {
   end,
 })
 
---[[ KEY BINDINGS --]]
-
--- Global search key binds
-vim.keymap.set('n', '<leader>sac', builtin.autocommands, { desc = 'Search auto commands' })
-vim.keymap.set('n', '<leader>sb', builtin.buffers, { desc = 'Search buffers' })
-vim.keymap.set('n', '<leader>sds', builtin.lsp_document_symbols, { desc = 'Search document symbols' })
-vim.keymap.set('n', '<leader>sD', builtin.diagnostics, { desc = 'Search diagnostics' })
-vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = 'Search files' })
-vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = 'Search grep' })
-vim.keymap.set('n', '<leader>sh', builtin.current_buffer_fuzzy_find, { desc = 'Search here' })
-vim.keymap.set('n', '<leader>sH', builtin.help_tags, { desc = 'Search help tags' })
-vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = 'Search keymaps' })
-vim.keymap.set('n', '<leader>sp', builtin.builtin, { desc = 'Search pickers' })
-vim.keymap.set('n', '<leader>sr', builtin.registers, { desc = 'Search registers' })
-vim.keymap.set('n', '<leader>ssp', builtin.spell_suggest, { desc = 'Search spelling suggestions' })
-vim.keymap.set('n', '<leader>sws', builtin.lsp_workspace_symbols, { desc = 'Search workspace symbols' })
-vim.keymap.set('n', '<leader>sqf', builtin.quickfix, { desc = 'Search quick fix' })
-vim.keymap.set('n', '<leader>st', builtin.treesitter, { desc = 'Search treesitter' })
-vim.keymap.set('n', '<leader>sT', builtin.current_buffer_tags, { desc = 'Search buffer tags' })
-require('which-key').add({
-  { '<leader>s', group = '[s]earch', icon = '' }
-})
-
--- Git key binds
-vim.keymap.set('n', '<leader>gb', builtin.git_branches, { desc = 'Git branches' })
-vim.keymap.set('n', '<leader>gc', builtin.git_commits, { desc = 'Git commits' })
-vim.keymap.set('n', '<leader>gC', builtin.git_bcommits, { desc = 'Git buffer commits' })
-vim.keymap.set('n', '<leader>gs', builtin.git_status, { desc = 'Git status' })
-vim.keymap.set('n', '<leader>gS', builtin.git_stash, { desc = 'Git stash' })
-require('which-key').add({
-{ '<leader>g', group = '[g]it', icon = '' }
-})
-
--- LSP key binds
-vim.keymap.set('n', 'gai', builtin.lsp_incoming_calls, { desc = 'Telescope incoming calls' })
-vim.keymap.set('n', 'gao', builtin.lsp_outgoing_calls, { desc = 'Telescope outgoing calls' })
-vim.keymap.set('n', 'gd', builtin.lsp_definitions, { desc = 'Telescope definition' })
-vim.keymap.set('n', 'gI', builtin.lsp_implementations, { desc = 'Telescope implementation' })
-vim.keymap.set('n', 'gr', builtin.lsp_references, { desc = 'Telescope references' })
-vim.keymap.set('n', 'gy', builtin.lsp_type_definitions, { desc = 'Telescope type definition' })
