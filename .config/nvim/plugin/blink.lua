@@ -36,13 +36,6 @@ require('blink.cmp').setup({
   },
   sources = {
     default = { 'lsp', 'path', 'snippets', 'buffer' },
-    providers = {
-      snippets = {
-        opts = {
-          friendly_snippets = true
-        }
-      }
-    }
   },
   fuzzy = {
     implementation = 'prefer_rust_with_warning',

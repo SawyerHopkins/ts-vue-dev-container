@@ -4,8 +4,6 @@ vim.pack.add({ 'https://github.com/stevearc/oil.nvim' }, { confirm = false })
 vim.pack.add({ 'https://github.com/nvim-telescope/telescope.nvim' }, { confirm = false })
 
 local builtin = require('telescope.builtin')
-local MiniMap = require('mini.map')
-local mini_key_map = require('mini.keymap')
 
 -- Move to window using the <ctrl> hjkl keys
 vim.keymap.set('n', '<C-h>', '<C-w>h', { desc = 'Go to Left Window', remap = true })
@@ -277,10 +275,4 @@ end, { desc = "Close buffer" })
 require('which-key').add({
   { '<leader>b', group = '[b]uffer', icon = '' }
 })
-
--- completion
-mini_key_map.map_multistep('i', '<Tab>',   { 'pmenu_accept', 'minipairs_cr' })
-mini_key_map.map_multistep('i', '<S-Tab>', { 'pmenu_prev' })
-mini_key_map.map_multistep('i', '<CR>',    { 'pmenu_accept', 'minipairs_cr' })
-mini_key_map.map_multistep('i', '<BS>',    { 'minipairs_bs' })
 
