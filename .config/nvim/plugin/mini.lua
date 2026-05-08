@@ -109,3 +109,11 @@ require('mini.tabline').setup()
 -- Highlight and remove trailing whitespace
 require('mini.trailspace').setup()
 
+vim.api.nvim_create_autocmd("User", {
+  pattern = "MiniSessionSavePre",
+  callback = function()
+    -- Close nvim-tree before session save
+    local nvim_tree_api = require("nvim-tree.api")
+    nvim_tree_api.tree.close()
+  end,
+})

@@ -14,7 +14,7 @@ vim.keymap.set('n', '<C-k>', '<C-w>k', { desc = 'Go to Upper Window', remap = tr
 vim.keymap.set('n', '<C-l>', '<C-w>l', { desc = 'Go to Right Window', remap = true })
 
 -- [f]ile keys
-vim.keymap.set({ 'i', 'x', 'n', 's' }, '<leader>fs', '<cmd>w<cr><esc>', { desc = 'Save File' })
+vim.keymap.set({ 'x', 'n', 's' }, '<leader>fs', '<cmd>w<cr><esc>', { desc = 'Save File' })
 vim.keymap.set('n', '<leader>fe', require('oil').open_float, { desc = 'File explorer (oil)' })
 require('which-key').add({
   { '<leader>f', group = '[f]ile', icon = '' }
