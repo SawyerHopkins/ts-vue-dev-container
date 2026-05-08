@@ -18,10 +18,6 @@ require('mini.align').setup()
 -- Toggle comments easily (line/block commenting)
 require('mini.comment').setup()
 
--- Map keys to perform configurable multi-step actions
-local mini_key_map = require('mini.keymap')
-mini_key_map.setup()
-
 -- Move lines or selections up/down/left/right
 require('mini.move').setup()
 
