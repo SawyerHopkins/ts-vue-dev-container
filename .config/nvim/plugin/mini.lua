@@ -18,13 +18,6 @@ require('mini.align').setup()
 -- Toggle comments easily (line/block commenting)
 require('mini.comment').setup()
 
--- Lightweight autocompletion framework
-require('mini.completion').setup()
-
--- File explorer for navigating directories and files
--- lighter and smaller than oil, but less information provided
-require('mini.files').setup()
-
 -- Map keys to perform configurable multi-step actions
 local mini_key_map = require('mini.keymap')
 mini_key_map.setup()
@@ -37,16 +30,6 @@ require('mini.operators').setup()
 
 -- Auto-pair brackets, quotes, etc.
 require('mini.pairs').setup()
-
--- Snippet engine (loading + expansion support)
-local snippets = require('mini.snippets')
-snippets.setup({
-  snippets = {
-    snippets.gen_loader.from_file(vim.fn.stdpath('config') .. '/snippets/global.json'),
-    snippets.gen_loader.from_lang(),
-  }
-})
-snippets.start_lsp_server()
 
 -- Toggle between single-line and multi-line structures (e.g., arrays, arguments)
 require('mini.splitjoin').setup()
@@ -86,16 +69,6 @@ require('mini.icons').setup()
 
 -- Visual indentation guides with scope highlighting
 require('mini.indentscope').setup()
-
--- Mini-map (code overview sidebar like VSCode minimap)
-local map = require('mini.map')
-map.setup({
-  integrations = {
-    map.gen_integration.builtin_search(),
-    map.gen_integration.diff(),
-    map.gen_integration.diagnostic(),
-  }
-})
 
 -- Notification system (replaces vim.notify with better UI)
 require('mini.notify').setup()

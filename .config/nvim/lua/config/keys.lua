@@ -15,7 +15,9 @@ vim.keymap.set('n', '<C-l>', '<C-w>l', { desc = 'Go to Right Window', remap = tr
 
 -- [f]ile keys
 vim.keymap.set({ 'x', 'n', 's' }, '<leader>fs', '<cmd>w<cr><esc>', { desc = 'Save File' })
-vim.keymap.set('n', '<leader>fe', require('oil').open_float, { desc = 'File explorer (oil)' })
+vim.keymap.set('n', '<leader>fg', '<cmd>NvimTreeFindFile<CR>', { desc = 'Expand to file' })
+vim.keymap.set('n', '<leader>fr', '<cmd>NvimTreeRefresh<CR>', { desc = 'Refresh explorer' })
+vim.keymap.set('n', '<leader>fe', '<cmd>NvimTreeToggle<CR>', { desc = 'File explorer' })
 require('which-key').add({
   { '<leader>f', group = '[f]ile', icon = '' }
 })
@@ -166,7 +168,7 @@ vim.keymap.set({ 'n', 'x', 'o' }, '[Z', function()
 end, { desc = 'Goto previous fold end' })
 
 -- [?]which_key
-vim.keymap.set('n', '<leader>?', function() which_key.show({
+vim.keymap.set('n', '<leader>?', function() require('which-key').show({
   global = false
 }) end, { desc = 'Buffer Local Keymaps (which-key)' })
 
@@ -243,30 +245,14 @@ require('which-key').add({
   { '<leader>r', group = '[r]efactor', icon = '' }
 })
 
--- hover keys
-vim.keymap.set('n', 'K', function()
-  require('hover').open()
-end, { desc = 'hover.nvim (open)' })
-
-vim.keymap.set('n', 'gK', function()
-  require('hover').enter()
-end, { desc = 'hover.nvim (enter)' })
-
-vim.keymap.set('n', '<C-p>', function()
-    require('hover').switch('previous')
-end, { desc = 'hover.nvim (previous source)' })
-
-vim.keymap.set('n', '<C-n>', function()
-    require('hover').switch('next')
-end, { desc = 'hover.nvim (next source)' })
-
--- [m]inimap keys
-vim.keymap.set('n', '<leader>mf', MiniMap.toggle_focus, { desc = 'Toggle minimap focus' })
-vim.keymap.set('n', '<leader>mr', MiniMap.refresh, { desc = 'Refresh minimap' })
-vim.keymap.set('n', '<leader>mt', MiniMap.toggle, { desc = 'Toggle minimap' })
+-- [h]over keys
+vim.keymap.set('n', '<leader>ht', vim.lsp.buf.hover, { desc = 'LSP' })
+vim.keymap.set('n', '<leader>hs', vim.lsp.buf.signature_help, { desc = 'Signature' })
+vim.keymap.set('n', '<leader>hd', vim.diagnostic.open_float, { desc = 'Diagnostics' })
 require('which-key').add({
-  { '<leader>m', group = '[m]inimap', icon = '' }
+  { '<leader>h', group = '[h]over', icon = '󰇀' }
 })
+
 
 -- [p]ersistent session keys
 vim.keymap.set('n', '<leader>pw', function()
@@ -293,18 +279,8 @@ require('which-key').add({
 })
 
 -- completion
-mini_key_map.map_multistep('i', '<Tab>',   { 'pmenu_next' })
+mini_key_map.map_multistep('i', '<Tab>',   { 'pmenu_accept', 'minipairs_cr' })
 mini_key_map.map_multistep('i', '<S-Tab>', { 'pmenu_prev' })
 mini_key_map.map_multistep('i', '<CR>',    { 'pmenu_accept', 'minipairs_cr' })
 mini_key_map.map_multistep('i', '<BS>',    { 'minipairs_bs' })
 
--- Help me
-local notify_many_keys = function(key, suggestion)
-  local lhs = string.rep(key, 5)
-  local action = function() vim.notify('Too many ' .. key .. '. Try ' .. suggestion) end
-  require('mini.keymap').map_combo({ 'n', 'x' }, lhs, action)
-end
-notify_many_keys('h', 'b')
-notify_many_keys('j', ']}')
-notify_many_keys('k', '[{')
-notify_many_keys('l', 'e or w')

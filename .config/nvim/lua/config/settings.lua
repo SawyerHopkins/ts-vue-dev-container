@@ -11,7 +11,7 @@ vim.g.loaded_netrw = 1 -- Disable netrw
 vim.g.loaded_netrwPlugin = 1 -- Disable netrw
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
-
+vim.cmd.colorscheme('catppuccin')
 --[[
   Set status line filename highlight color when buffer is dirty 
 --]]

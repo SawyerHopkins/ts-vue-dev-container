@@ -8,7 +8,14 @@ vim.pack.add({ 'https://github.com/neovim/nvim-lspconfig' }, { confirm = false }
 
 --[[ SETUP --]]
 
-vim.lsp.config('vue_ls', {})
+vim.lsp.config('vue_ls', {
+  init_options = {
+    vue = {
+      hybridMode = true
+    }
+  }
+})
+
 vim.lsp.config('vtsls', {
   settings = {
     vtsls = {
